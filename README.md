@@ -1,5 +1,14 @@
 # Cucumber-Kotlin-RA
+# Add a feature file
 
+ ```	
+	@testthis
+	Scenario: Test API
+	  Given I have API
+    When I Hit API with user id as 1
+		Then status code comes as 200
+		And json body contain name as "Leanne Graham"
+ ```
 # Ressources 
 
 Cucumber avec Kotlin
