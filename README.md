@@ -1,5 +1,5 @@
 # Cucumber-Kotlin-RA
-# Add a feature file
+# Feature file
 
  ```	
 @testthis
@@ -8,6 +8,16 @@
  When I Hit API with user id as 1
  Then status code comes as 200
  And json body contain name as "Leanne Graham"
+ ```
+ 
+# Step Definitions
+
+En cas d'utilisation de Rest Assured avec kotlin, nous devons échapper à la fonction when car when est un mot-clé réservé dans Kotlin.
+Donc,il faut ajouter une fonction d'extension (When) 
+ ```	
+fun RequestSpecification.When(): RequestSpecification {
+              return this.`when`()
+                }
  ```
 # Ressources 
 
