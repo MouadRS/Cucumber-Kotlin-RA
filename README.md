@@ -1,4 +1,14 @@
 # Cucumber-Kotlin-RA
+Cucumber projet en utilisons le langage Kotlin. C'etait pour le but de decouvrir le frameWork Cucumber et Rest Assured ,Dans ce projet en réalise le test de l'api https://jsonplaceholder.typicode.com .
+
+Cucumber n'est pas un outil d'automatisation d'API. C'est pour cela il faut choisit un outil d'automatisation D'API , qui fonctionne bien avec Cucumber. On trouve : -Rest assured -Karate https://cucumber.io/docs/guides/api-automation/
+
+Pour ce essaie j'ai choisit Rest Assured; ( https://github.com/rest-assured/rest-assured )
+
+Cucumber-java8
+Junit
+Rest Assured
+
 # Feature file
 
  ```	
@@ -57,7 +67,6 @@ class StepDefs2: En {
                }
 	       }
 }
-
 
 
  ```
