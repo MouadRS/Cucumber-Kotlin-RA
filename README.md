@@ -15,9 +15,51 @@
 En cas d'utilisation de Rest Assured avec kotlin, nous devons échapper à la fonction when car when est un mot-clé réservé dans Kotlin.
 Donc,il faut ajouter une fonction d'extension (When) 
  ```	
-fun RequestSpecification.When(): RequestSpecification {
+import cucumber.api.java8.En
+import io.restassured.specification.RequestSpecification
+import io.restassured.response.ValidatableResponse
+import org.hamcrest.Matchers.equalTo
+import org.junit.Test
+import io.restassured.RestAssured.*
+
+class StepDefs2: En {
+
+    init {
+           fun RequestSpecification.When(): RequestSpecification {
               return this.`when`()
                 }
+		
+		
+           Given("^I have API$"){
+               given().baseUri("https://jsonplaceholder.typicode.com")
+   
+           }
+           When("^I Hit API with user id as (\\d+)$") { id : Int ->
+              given().baseUri("https://jsonplaceholder.typicode.com").
+              When().
+              get("/users/" + id)
+      
+            }
+
+            Then("^status code comes as (\\d+)$"){ Stcode : Int ->
+	
+	           given().baseUri("https://jsonplaceholder.typicode.com").
+	           When().
+	           get("/users/1").
+	           then().
+	           assertThat().statusCode(Stcode)
+               }
+           Then("^json body contain name as \"([^\"]*)\"$") { name: String ->
+               given().baseUri("https://jsonplaceholder.typicode.com").
+               When().
+               get("/users/1").then().
+               body("name",equalTo(name))
+               }
+	       }
+}
+
+
+
  ```
 # Ressources 
 
